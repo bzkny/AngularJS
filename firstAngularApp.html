@@ -1,0 +1,53 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>Angular</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script src="D2.js"></script>
+  </head>
+  <body>
+
+    <div ng-controller="myController as myCtrl">
+
+      <!-- Include angular control as a class  -->
+      <h1 ng-bind="myCtrl.myName"></h1>
+      <h2 ng-bind="myCtrl.favoriteThings"></h2>
+      <!-- Include angular control inline -->
+      <div>My favorite things to do are: {{ myCtrl.favoriteThings }}</div>
+      <p ng-bind="myCtrl.hometown"></p>
+
+      <div ng-repeat="friends in myCtrl.nameArray">
+        <!-- I CAN ONLY USE IT WITHIN NG-REPEAT -->
+        {{ friends }}
+      </div>
+      <div ng-repeat="object in myCtrl.objectsArray">
+        <label>First Name:</label><span ng-bind="object.fName"></span><br>
+        <label>Last Name:</label><span ng-bind="object.lName"></span><br>
+      </div>
+      <div ng-repeat="(key, val) in myCtrl.dog">
+        {{$index }}
+      </div>
+
+      <input type="text" ng-model="myCtrl.studentName">
+        {{ myCtrl.studentName }}
+
+      <input type="text" ng-model="myCtrl.student.name.fname">
+        {{ myCtrl.student.name.fname }}
+
+      <h3>NG-MODEL WITH A CHECKBOX (NO JS REQUIRED)</h3>
+      <input type="checkbox" ng-model="myCtrl.isChecked">
+      <div>Checkbox is checked: {{ myCtrl.isChecked }}</div>
+
+      <h3>NG-MODEL WITH A RADIO (NO JS REQUIRED)</h3>
+      <input type="radio"
+             name="season"
+             ng-value="myCtrl.fallSeason" ng-model="myCtrl.seasonSelected">Fall
+      <input type="radio" name="season" ng-value="myCtrl.winterSeason" ng-model="myCtrl.seasonSelected">Winter
+      <input type="radio" name="season" ng-value="myCtrl.springSeason" ng-model="myCtrl.seasonSelected">Spring
+      <input type="radio" name="season" ng-value="myCtrl.summerSeason" ng-model="myCtrl.seasonSelected">Summer
+
+      <div>The selected season is {{ myCtrl.seasonSelected.name }} {{ myCtrl.seasonSelected.description }}</div>
+
+    </div>
+
+  </body>
