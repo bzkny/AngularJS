@@ -1,0 +1,108 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>Angular</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script src="H1.js"></script>
+
+    <style type="text/css" media="screen">
+
+      .radioContainer {
+        background: white;
+        color: #111;
+        border: 1px solid #111;
+        padding: 10px;
+      }
+      .cont1, .cont2 {
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid black;
+      }
+      .cont1 {
+        background: #efefef;
+      }
+      .cont2 {
+        background: #999;
+      }
+      .yellowClass {
+        background: yellow;
+        color: green;
+      }
+      .yellowClass .cont1 {
+        background: red;
+      }
+      .yellowClass .cont2 {
+        background: hotpink;
+      }
+
+      .greenClass {
+        background: green;
+        color: red;
+      }
+      .greenClass .cont1 {
+        background: yellow;
+      }
+      .greenClass .cont2 {
+        background: gold;
+      }
+
+      .redClass {
+        background: red;
+        color: yellow;
+      }
+      .redClass .cont1 {
+        background: green;
+      }
+      .redClass .cont2 {
+        background: darkgreen;
+      }
+
+      .blueClass {
+        background: blue;
+        color: #036;
+      }
+      .blueClass .cont1 {
+        background: #fff;
+      }
+      .blueClass .cont2 {
+        background: darkgreen;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div ng-controller="myController as myCtrl">
+
+      <h3>TOGGLE</h3>
+
+      <div ng-class="myCtrl.cssObject" class="radioContainer">
+        <input type="radio"
+               ng-value="myCtrl.default"
+               ng-model="myCtrl.colorSelected"> Default
+        <input type="radio"
+               ng-value="myCtrl.yellow"
+               ng-model="myCtrl.colorSelected"
+               ng-model="myCtrl.cssObject.yellowClass"> Yellow
+        <input type="radio"
+               ng-value="myCtrl.green"
+               ng-model="myCtrl.colorSelected"
+               ng-model="myCtrl.cssObject.greenClass"> Green
+        <input type="radio"
+               ng-value="myCtrl.red"
+               ng-model="myCtrl.colorSelected"
+               ng-model="myCtrl.cssObject.redClass"> Red
+        <input type="radio"
+               ng-value="myCtrl.blue"
+               ng-model="myCtrl.colorSelected"
+               ng-model="myCtrl.cssObject.blueClass"> Blue
+
+        <div class="cont1">This is the {{ myCtrl.colorSelected.color }} text line 1.
+        </div>
+        <div class="cont2">The is the {{ myCtrl.colorSelected.color }} text line 2.
+        </div>
+      </div>
+
+    </div>
+
+  </body>
