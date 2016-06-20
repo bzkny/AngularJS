@@ -55,6 +55,16 @@ myModule.controller('myController',
       name: 'summer',
       description: 'smells like garbage in the city'
     }
+
+    //ADD A CLASS ON USER INTERACTION
+    self.userString = "redClass"
+
+    //TOGGLE CLASS
+    self.cssObject = {
+      redClass: true,
+      purpleClass: true
+    }
+
 });
 
 //THIS PROBLEMS SO WE RENAME TO SELF

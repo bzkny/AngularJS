@@ -4,6 +4,16 @@
     <title>Angular</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
     <script src="D2.js"></script>
+
+    <style type="text/css" media="screen">
+      .redClass{
+        background: red;
+      }
+      .purpleClass{
+        color: purple;
+      }
+
+    </style>
   </head>
   <body>
 
@@ -24,8 +34,10 @@
         <label>First Name:</label><span ng-bind="object.fName"></span><br>
         <label>Last Name:</label><span ng-bind="object.lName"></span><br>
       </div>
-      <div ng-repeat="(key, val) in myCtrl.dog">
-        {{$index }}
+
+
+      <div ng-repeat="(beaskey, val) in myCtrl.dog">
+        {{ $index + 1 }}. {{ beaskey }}: {{val}}
       </div>
 
       <input type="text" ng-model="myCtrl.studentName">
@@ -47,6 +59,17 @@
       <input type="radio" name="season" ng-value="myCtrl.summerSeason" ng-model="myCtrl.seasonSelected">Summer
 
       <div>The selected season is {{ myCtrl.seasonSelected.name }} {{ myCtrl.seasonSelected.description }}</div>
+
+      <h3>NG-CLASS WITH A STRING</h3>
+      <input type="text" ng-model="myCtrl.userString">
+      <div ng-class="myCtrl.userString">Lorem ipsum dolor sit amet, ne qui regione consequat, has eu ridens aliquando. Te unum minim menandri sed, eam veniam ceteros ne. His ut assum partem altera, nam labores omnesque eu, regione sententiae pri an. Eum in ferri accusam forensibus, aliquando scripserit theophrastus duo cu, ad per iisque inimicus temporibus. Mucius blandit vituperata sed et, ea partem nostrum reprehendunt has, pro an facer affert dolores.
+      </div>
+
+      <h3>TOGGLE</h3>
+      <input type="checkbox" ng-model="myCtrl.cssObject.redClass">
+      <input type="checkbox" ng-model="myCtrl.cssObject.purpleClass">
+      <div ng-class="myCtrl.cssObject">Lorem ipsum dolor sit amet, ne qui regione consequat, has eu ridens aliquando. Te unum minim menandri sed, eam veniam ceteros ne. His ut assum partem altera, nam labores omnesque eu, regione sententiae pri an. Eum in ferri accusam forensibus, aliquando scripserit theophrastus duo cu, ad per iisque inimicus temporibus. Mucius blandit vituperata sed et, ea partem nostrum reprehendunt has, pro an facer affert dolores.
+      </div>
 
     </div>
 
