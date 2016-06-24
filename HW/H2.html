@@ -3,7 +3,7 @@
   <head>
     <title>Angular</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
-    <script src="H1.js"></script>
+    <script src="H2.js"></script>
 
     <style type="text/css" media="screen">
 
@@ -73,31 +73,32 @@
   <body>
 
     <div ng-controller="myController as myCtrl">
+      <div class="folderAndFiles">
+        <h3>Folders</h3>
 
-      <h3>TOGGLE</h3>
+        <h3 class="fileName">File Name:</h3>
 
-      <div ng-class="myCtrl.colorSelected.css" class="radioContainer">
-        <input type="radio"
-               ng-value="myCtrl.default"
-               ng-model="myCtrl.colorSelected"> Default
-        <input type="radio"
-               ng-value="myCtrl.yellow"
-               ng-model="myCtrl.colorSelected"> Yellow
-        <input type="radio"
-               ng-value="myCtrl.green"
-               ng-model="myCtrl.colorSelected"> Green
-        <input type="radio"
-               ng-value="myCtrl.red"
-               ng-model="myCtrl.colorSelected"> Red
-        <input type="radio"
-               ng-value="myCtrl.blue"
-               ng-model="myCtrl.colorSelected"> Blue
+          <div ng-class="myCtrl.folderSelected.css" class="radioContainer">
+            <input type="radio"
+                   ng-value="myCtrl.default"
+                   ng-model="myCtrl.folderSelected"> Folder 1
+            <input type="radio"
+                   ng-value="myCtrl.yellow"
+                   ng-model="myCtrl.folderSelected"> Folder 2
+            <input type="radio"
+                   ng-value="myCtrl.green"
+                   ng-model="myCtrl.folderSelected"> Folder 3
 
-        <div class="cont1">This is the {{ myCtrl.colorSelected.color }} text line 1.
-        </div>
-        <div class="cont2">The is the {{ myCtrl.colorSelected.color }} text line 2.
-        </div>
-      </div>
+            <div class="cont1">This is the {{ myCtrl.colorSelected.color }} text line 1.
+            </div>
+            <div class="cont2">The is the {{ myCtrl.colorSelected.color }} text line 2.
+            </div>
+
+          </div>
+        </div><!--CLOSES folderAndFiles -->
+
+      <h3>Form</h3>
+
 
     </div>
 
