@@ -1,0 +1,8 @@
+Great job B!  Way to use only one ng-class and take advantage of css selectors.  App is working nicely, here are some optimations you could make
+
+1) Put the css into a seperate file next time please
+
+2)  In this case we only have 5 themes but we could have 10 themes, or we could allow a user to create a theme and add it to the list.  One optimazation you could make is to put the themes into an array and use ng-repeat to get them rendered on the screen.
+
+I'm really happy with it though. Great Job!
+
