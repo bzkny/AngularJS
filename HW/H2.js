@@ -5,21 +5,45 @@ myModule.controller('myController',
   function(){
     var self = this;
 
-    self.yellow = {
-      color: 'yellow',
-      css: 'yellowClass'
+    //FOLDER SHOW/HIDE
+    self.expandSubFolders = true;
+
+    self.folderName = '';
+
+    self.one = {
+      fname: ' ',
     }
-    self.green = {
-      color: 'green',
-      css: 'greenClass',
+
+    self.two = {
+      fname: ' ',
     }
-    self.red = {
-      color: 'red',
-      css: 'redClass',
+
+    self.three = {
+      fname: ' ',
     }
-    self.blue = {
-      color: 'blue',
-      css: 'blueClass',
+
+    //TO DO LIST SECTION
+    self.priorityHigh = {
+      name: ' ',
+      description: ' ',
+      css: 'redClass'
     }
+    self.priorityMedium = {
+      name: ' ',
+      description: ' ',
+      css: 'greenClass'
+    }
+     self.priorityLow = {
+      name: ' ',
+      description: ' ',
+      css: 'blueClass'
+    }
+    self.onUpdateClick = function(){
+      console.log('you clicked the button!');
+      self.fillList = true;
+      self.fillFolderFile = true;
+    }
+
+
 
 });
