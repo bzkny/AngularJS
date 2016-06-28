@@ -2,7 +2,7 @@
 <html ng-app="myApp">
   <head>
     <title>Angular</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script src="angular.min.js"></script>
     <script src="H2.js"></script>
 
     <style type="text/css" media="screen">
@@ -24,48 +24,30 @@
       .cont2 {
         background: #999;
       }
-      .yellowClass {
-        background: yellow;
+      .greenClass {
         color: green;
       }
-      .yellowClass .cont1 {
-        background: red;
-      }
-      .yellowClass .cont2 {
-        background: hotpink;
-      }
-
-      .greenClass {
-        background: green;
+      .redClass {
         color: red;
       }
-      .greenClass .cont1 {
-        background: yellow;
-      }
-      .greenClass .cont2 {
-        background: gold;
-      }
-
-      .redClass {
-        background: red;
-        color: yellow;
-      }
-      .redClass .cont1 {
-        background: green;
-      }
-      .redClass .cont2 {
-        background: darkgreen;
-      }
-
       .blueClass {
-        background: blue;
         color: #036;
       }
-      .blueClass .cont1 {
-        background: #fff;
+      .folders {
+        float: left;
       }
-      .blueClass .cont2 {
-        background: darkgreen;
+      .fileName {
+        float: right;
+      }
+      .form {
+        width: 100%;
+        float: left;
+      }
+      ol li {
+        list-style-type: disc;
+        margin-left: 17px;
+      }
+      input { margin: 9px 0;
       }
 
     </style>
@@ -74,31 +56,70 @@
 
     <div ng-controller="myController as myCtrl">
       <div class="folderAndFiles">
-        <h3>Folders</h3>
 
-        <h3 class="fileName">File Name:</h3>
 
-          <div ng-class="myCtrl.folderSelected.css" class="radioContainer">
-            <input type="radio"
-                   ng-value="myCtrl.default"
-                   ng-model="myCtrl.folderSelected"> Folder 1
-            <input type="radio"
-                   ng-value="myCtrl.yellow"
-                   ng-model="myCtrl.folderSelected"> Folder 2
-            <input type="radio"
-                   ng-value="myCtrl.green"
-                   ng-model="myCtrl.folderSelected"> Folder 3
+        <div class="folders">
+          <h3>Folders</h3>
+          <input type="checkbox"
+             ng-value="myCtrl.default"
+             ng-model="myCtrl.expandSubFolders">Expand All
 
-            <div class="cont1">This is the {{ myCtrl.colorSelected.color }} text line 1.
-            </div>
-            <div class="cont2">The is the {{ myCtrl.colorSelected.color }} text line 2.
-            </div>
-
+          <div ng-repeat="folder in myCtrl.folders">
+            {{ folder.name }}
+            <ol ng-show="myCtrl.expandSubFolders">
+              <li ng-repeat="file in folder.files">{{ file }}</li>
+            </ol>
           </div>
+
+
+        </div><!--CLOSES folders -->
+
+
+        <div class="fileName">
+          <h3>New File</h3>
+
+          <input type="text"
+             ng-model="myCtrl.userFileName">
+
+            <div ng-repeat="folder in myCtrl.folders">
+
+              <input type="radio"
+                     ng-value="folder"
+                     ng-model="myCtrl.folderSelected"> {{ folder.name }}
+            </div>
+            <button ng-click="myCtrl.addFile()">Add title</button>
+
+          </div><!--CLOSES fileName -->
+
+
         </div><!--CLOSES folderAndFiles -->
 
-      <h3>Form</h3>
+      <div class="form">
+        <div class="toDoForm">
+          <h3>To Do List</h3>
+          Name: <input type="text" ng-model="myCtrl.toDoList.name"><br />
+          Description: <input type="text" ng-model="myCtrl.toDoList.description"><br />
+          Priority:<br />
+          <input type="radio"
+                 ng-value="myCtrl.priorityHigh"
+                 ng-model="myCtrl.toDoList"> High <br />
+          <input type="radio"
+                 ng-value="myCtrl.priorityMedium"
+                 ng-model="myCtrl.toDoList"> Medium <br />
+          <input type="radio"
+                 ng-value="myCtrl.priorityLow"
+                 ng-model="myCtrl.toDoList"> Low <br />
+          <button type="submit" text="Add to To Do List" ng-click="myCtrl.onUpdateClick()">Add to To Do List</button>
+        </div>
+        <div class="toDoList">
+          <h3>To Do List</h3>
+          <ol ng-show="myCtrl.fillList" ng-class="myCtrl.toDoList.css" >
+            <li ng-repeat="toDoList">{{ myCtrl.toDoList.name }} - {{ myCtrl.toDoList.description }}</li>
+            <li></li>
 
+          </ol>
+        </div>
+      </div>
 
     </div>
 

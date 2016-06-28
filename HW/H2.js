@@ -5,21 +5,59 @@ myModule.controller('myController',
   function(){
     var self = this;
 
-    self.yellow = {
-      color: 'yellow',
-      css: 'yellowClass'
+    //FOLDER SHOW/HIDE
+    self.expandSubFolders = true;
+
+    self.folders = [{
+      name: 'Folder 1',
+      files: ["File 1", "File 2"],
+      newFile: '',
+      }, {
+      name: 'Folder 2',
+      files: ["File 2.1", "File 2.2"],
+      newFile: '',
+    }, {
+      name: 'Folder 3',
+      files: ["File 3.1", "File 3.2"],
+      newFile: '',
+    }];
+
+    //FILES ADD TO FOLDERS
+    self.newFile = '';
+
+    self.addFile = function(){
+      console.log('workin');
+      self.folderSelected.files.push(self.userFileName);
     }
-    self.green = {
-      color: 'green',
-      css: 'greenClass',
+
+
+    //TO DO LIST SECTION
+    self.toDoList = {
+      name: '',
+      description: '',
+      css: ['', '', '']
     }
-    self.red = {
-      color: 'red',
-      css: 'redClass',
+
+    self.priorityHigh = {
+      name: ' ',
+      description: ' ',
+      css: 'redClass'
     }
-    self.blue = {
-      color: 'blue',
-      css: 'blueClass',
+    self.priorityMedium = {
+      name: ' ',
+      description: ' ',
+      css: 'greenClass'
     }
+     self.priorityLow = {
+      name: ' ',
+      description: ' ',
+      css: 'blueClass'
+    }
+    self.onUpdateClick = function(){
+      console.log('you clicked the button!');
+      self.fillList = true;
+    }
+
+
 
 });
