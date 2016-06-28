@@ -56,57 +56,44 @@
 
     <div ng-controller="myController as myCtrl">
       <div class="folderAndFiles">
-        <div class="folders">
-        <h3>Folders</h3>
-          <input type="checkbox"
-                   ng-value="myCtrl.default"
-                   ng-model="myCtrl.expandSubFolders">Expand All
-          <div ng-model="myCtrl.folderName"> Folder {{ $index + 1 }}
-            <ol ng-show="myCtrl.expandSubFolders" ng-show="fillFolderFile">
-              <li>Folder {{ $index + 1 }}.{{ $index + 1 }}</li>
-              <li>Folder {{ $index + 1 }}.{{ $index + 2 }}</li>
-              <li>Folder {{ $index + 1 }}.{{ $index + 3 }}</li>
 
+
+        <div class="folders">
+          <h3>Folders</h3>
+          <input type="checkbox"
+             ng-value="myCtrl.default"
+             ng-model="myCtrl.expandSubFolders">Expand All
+
+          <div ng-repeat="folder in myCtrl.folders">
+            {{ folder.name }}
+            <ol ng-show="myCtrl.expandSubFolders">
+              <li ng-repeat="file in folder.files">{{ file }}</li>
             </ol>
           </div>
-          <div>Folder {{ $index + 2 }}
-          <ol ng-show="myCtrl.expandSubFolders" ng-show="fillFolderFile">
-              <li>Folder 2.1</li>
-              <li>Folder 2.2</li>
-              <li>Folder 2.3</li>
-            </ol>
-          </div>
-          <div>Folder 3
-            <ol ng-show="myCtrl.expandSubFolders" ng-show="fillFolderFile">
-              <li>Folder 3.1</li>
-              <li>Folder 3.2</li>
-              <li>Folder 3.3</li>
-            </ol>
-          </div>
-        </div>
+
+
+        </div><!--CLOSES folders -->
+
 
         <div class="fileName">
           <h3>New File</h3>
+
           <input type="text"
-                     ng-value="myCtrl.default"
-                     ng-model="myCtrl.folderSelected">
-            <div ng-class="myCtrl.folderSelected">
+             ng-model="myCtrl.userFileName">
+
+            <div ng-repeat="folder in myCtrl.folders">
 
               <input type="radio"
-                     ng-value="myCtrl.one"
-                     ng-model="myCtrl.folderSelected"> Folder 1
-              <input type="radio"
-                     ng-value="myCtrl.two"
-                     ng-model="myCtrl.folderSelected"> Folder 2
-              <input type="radio"
-                     ng-value="myCtrl.three"
-                     ng-model="myCtrl.folderSelected"> Folder 3
-
-              <button ng-click="myCtrl.onUpdateClick()">Add title</button>
-
+                     ng-value="folder"
+                     ng-model="myCtrl.folderSelected"> {{ folder.name }}
             </div>
-          </div>
+            <button ng-click="myCtrl.addFile()">Add title</button>
+
+          </div><!--CLOSES fileName -->
+
+
         </div><!--CLOSES folderAndFiles -->
+
       <div class="form">
         <div class="toDoForm">
           <h3>To Do List</h3>
@@ -127,7 +114,7 @@
         <div class="toDoList">
           <h3>To Do List</h3>
           <ol ng-show="myCtrl.fillList" ng-class="myCtrl.toDoList.css" >
-            <li>{{ myCtrl.toDoList.name }} - {{ myCtrl.toDoList.description }}</li>
+            <li ng-repeat="toDoList">{{ myCtrl.toDoList.name }} - {{ myCtrl.toDoList.description }}</li>
             <li></li>
 
           </ol>
