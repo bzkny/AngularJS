@@ -1,0 +1,28 @@
+Good job so far Bea. The Todo part needs a little bit more work.  Here are some hints:
+
+
+Separte out the models you use to capture what the user is doing (self.toDoList) with the stuff you need to display the view.
+
+eg:
+
+	self.toDoList will be used to capture what the user is doing.
+
+	self.priorities = [..] a list of stuff used to display the buttons and set the values on models.
+
+
+So for example to get the name you have 
+	self.todoList.name 
+in the controller and in the view we have:
+	<input type="text" ng-model="myCtrl.toDoList.name">
+
+you're linking up the view and controller perfectly.
+
+The problem is in the radio buttons
+
+	<input type="radio"
+	       ng-value="myCtrl.priorityHigh"
+	       ng-model="myCtrl.toDoList"> High
+
+Everything is is correct except the model.  You're using myCtrl.toDoList as your model which is the object you're using to capture the name/description etc.  So when the user clicks on this radio button everything will be wiped out of that object and replace with myCtrl.priorityHigh.
+
+For your model you should use a single property on the object.  For example you can say ng-model="myCtrl.toDoList.priority" instead of the object itself.  Let's discuss this more on Wednesday
